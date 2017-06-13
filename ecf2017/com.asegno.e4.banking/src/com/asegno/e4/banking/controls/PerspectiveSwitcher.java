@@ -1,5 +1,9 @@
 package com.asegno.e4.banking.controls;
 
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -63,19 +67,26 @@ public class PerspectiveSwitcher{
 		toolBar = (ToolBar) parent.getParent();
 		
 		int size = perspectiveStack.getChildren().size();
-		for(int i=0; i<size; i++) {
-			MPerspective p = perspectiveStack.getChildren().get(i);
+		
+		List<MPerspective> perspectives = perspectiveStack.getChildren().stream()
+					.filter(p->p.isToBeRendered()&&p.isVisible())
+					.collect(Collectors.toList());
+		
+		int i=0;
+		for(MPerspective p: perspectives) {
 			ToolItem ti = new ToolItem(toolBar, SWT.CHECK);
-			ti.setText(p.getLabel());
+			ti.setText(""+p.getLabel());
 			String iconURI = p.getIconURI();
-			ISWTResourceUtilities resUtils = (ISWTResourceUtilities) context
-					.get(IResourceUtilities.class.getName());
-			Image image = resUtils.imageDescriptorFromURI(
-					URI.createURI(iconURI)).createImage();
-			ti.setImage(image);
+			if(iconURI!=null) {
+				ISWTResourceUtilities resUtils = (ISWTResourceUtilities) context
+						.get(IResourceUtilities.class.getName());
+				Image image = resUtils.imageDescriptorFromURI(
+						URI.createURI(iconURI)).createImage();
+				ti.setImage(image);
+			}
 			ti.setData(MPERSPECTIVE, p);
 			ti.addSelectionListener(itemSelectionAdapter);
-			if(i<size-1) {
+			if(++i<perspectives.size()-1) {
 				new ToolItem(toolBar, SWT.SEPARATOR);
 			}
 		}

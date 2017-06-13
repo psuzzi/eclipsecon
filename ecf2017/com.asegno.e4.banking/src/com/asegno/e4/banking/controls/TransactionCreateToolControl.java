@@ -37,7 +37,7 @@ import org.eclipse.swt.layout.RowLayout;
  * @author psuzzi
  *
  */
-public class CreateTransactionToolControl {
+public class TransactionCreateToolControl {
 	
 	private IEclipseContext context;
 	private Composite composite;
@@ -46,7 +46,7 @@ public class CreateTransactionToolControl {
 	private CCombo combo;
 
 	@Inject
-	public CreateTransactionToolControl(IEclipseContext context) {
+	public TransactionCreateToolControl(IEclipseContext context) {
 		this.context = context;
 		System.out.println("Create Transaction toolControl ");
 	}

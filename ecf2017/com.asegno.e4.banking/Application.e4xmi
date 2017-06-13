@@ -5,6 +5,25 @@
       <children xsi:type="advanced:Perspective" xmi:id="_maP54FAiEeeQcps20EcOmw" elementId="com.asegno.e4.banking.perspective.sampleperspective" label="Sample Perspective" iconURI="platform:/plugin/com.asegno.e4.banking/icons/sample.png">
         <children xsi:type="basic:Part" xmi:id="_m3vHIFAiEeeQcps20EcOmw" elementId="com.asegno.e4.banking.part.samplepart" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.SamplePart" label="Sample Part"/>
       </children>
+      <children xsi:type="advanced:Perspective" xmi:id="_xc2uEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.0" toBeRendered="false"/>
+      <children xsi:type="advanced:Perspective" xmi:id="_yEYBEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.1" toBeRendered="false">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_0y_jcFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.partsashcontainer.0" horizontal="true">
+          <children xsi:type="basic:Part" xmi:id="_1_ytwFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.accountsearch" containerData="35" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.AccountSearchPart" label="Account Search"/>
+          <children xsi:type="basic:Part" xmi:id="_5XUDMFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.accountdetail" containerData="65" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.AccountDetailPart" label="Account Detail"/>
+        </children>
+      </children>
+      <children xsi:type="advanced:Perspective" xmi:id="_ycRjsFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.2" toBeRendered="false">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_9UnmQFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.partsashcontainer.1" horizontal="true">
+          <children xsi:type="basic:Part" xmi:id="_-hMHEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.transactionsearch" containerData="35" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.TransactionSearchPart" label="Transaction Search"/>
+          <children xsi:type="basic:PartStack" xmi:id="_Bn9DsFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.partstack.0" containerData="65">
+            <children xsi:type="basic:Part" xmi:id="_B_GYYFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.transactiondetail" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.TransactionDetailPart" label="Transaction Detail">
+              <toolbar xmi:id="_GphgIFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.toolbar.1">
+                <children xsi:type="menu:ToolControl" xmi:id="_Hp1toFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.toolcontrol.2" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.controls.TransactionCreateToolControl"/>
+              </toolbar>
+            </children>
+          </children>
+        </children>
+      </children>
     </children>
     <mainMenu xmi:id="_6wlLicgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_6wlLisgZEeSyMNYR5xypkQ" elementId="file" label="File">
@@ -13,6 +32,9 @@
         <children xsi:type="menu:DirectMenuItem" xmi:id="_A-U_UE-QEeeQcps20EcOmw" elementId="com.asegno.e4.banking.directmenuitem.saveasxml" label="Save As Xml" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.SaveAsXmlHandler"/>
         <children xsi:type="menu:DirectMenuItem" xmi:id="_EoJlsE-QEeeQcps20EcOmw" elementId="com.asegno.e4.banking.directmenuitem.loadfromxml" label="Load From XML" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.LoadFromXmlHandler"/>
         <children xsi:type="menu:MenuSeparator" xmi:id="_YX7swE_BEeeQcps20EcOmw" elementId="com.asegno.e4.banking.menuseparator.1"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_UjzCoFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.directmenuitem.savetodb" toBeRendered="false" label="Save to DB" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.SaveToDbHandler"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_Xir1oFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.directmenuitem.loadfromdb" toBeRendered="false" label="Load from DB" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.LoadFromDbHandler"/>
+        <children xsi:type="menu:MenuSeparator" xmi:id="_ccZ9oFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.menuseparator.0" toBeRendered="false"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLjcgZEeSyMNYR5xypkQ" elementId="com.asegno.e4.banking.handleditem.quit" label="Quit" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_6wlLjsgZEeSyMNYR5xypkQ" elementId="help" label="Help">
