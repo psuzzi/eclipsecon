@@ -5,43 +5,61 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.services.IServiceConstants;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.Text;
 
 import com.asegno.e4.banking.EventConstants;
 import com.asegno.e4.banking.model.Account;
+import com.asegno.e4.banking.model.Bank;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Canvas;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.draw2d.LightweightSystem;
+import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.core.databinding.beans.BeanProperties;
+import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
+import org.eclipse.core.databinding.observable.map.IObservableMap;
+import org.eclipse.core.databinding.beans.BeansObservables;
+import com.asegno.e4.banking.model.Customer;
+import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
+import org.eclipse.core.databinding.observable.list.IObservableList;
+import com.asegno.e4.banking.model.Transaction;
 
 public class AccountDetailPart extends BasePart<Account>{
-	
-
+	private DataBindingContext m_bindingContext;
 	private Text textAccountID;
 	private Text textBalance;
 	private Table table;
 	private Table table_1;
 	private TableViewer tableViewer;
 	private TableViewer tableViewer_1;
+	private Canvas canvas;
 	
 	
 	@Override
 	public void setModel(Account model) {
 		if(model==null)
 			return;
+		disposeBindings(m_bindingContext);
 		super.setModel(model);
+		if(table==null)
+			return;
+		m_bindingContext = initDataBindings();
+		update();
 	}
 	
 	public Account getModel() {
@@ -57,6 +75,12 @@ public class AccountDetailPart extends BasePart<Account>{
 	}
 	
 	/** called by the E4 framework when an event is posted with the given topic and object */
+	@Inject
+	@Optional
+	private void modelModified(@UIEventTopic(EventConstants.TOPIC_MODEL_MODIFIED) Bank model) {
+		setModel(new Account());
+	}
+	
 	@Inject
 	@Optional
 	private void modelModified(@UIEventTopic(EventConstants.TOPIC_MODEL_MODIFIED) Account account) {
@@ -91,6 +115,9 @@ public class AccountDetailPart extends BasePart<Account>{
 		textBalance = new Text(composite_1, SWT.BORDER);
 		textBalance.setEditable(false);
 		textBalance.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		canvas = new Canvas(composite, SWT.NONE);
+		canvas.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 		
 		Group grpCustomers = new Group(composite, SWT.NONE);
 		grpCustomers.setLayout(new FillLayout(SWT.HORIZONTAL));
@@ -139,10 +166,48 @@ public class AccountDetailPart extends BasePart<Account>{
 		tblclmnProcessed.setWidth(100);
 		tblclmnProcessed.setText("Processed");
 		
+		update();
+		
+		m_bindingContext = initDataBindings();
+		
 	}
 	
 	private void update() {
-		// Update the UI
+		tableViewer.refresh();
+		tableViewer_1.refresh();
+		resizeColumns(table);
+		resizeColumns(table_1);
+		LightweightSystem lws = new LightweightSystem(canvas);
+		ChartHelper.generateGraph(lws, getModel());
 	}
-
+	
+	protected DataBindingContext initDataBindings() {
+		DataBindingContext bindingContext = new DataBindingContext();
+		//
+		IObservableValue observeTextTextAccountIDObserveWidget = WidgetProperties.text(SWT.Modify).observe(textAccountID);
+		IObservableValue idGetModelObserveValue = BeanProperties.value("id").observe(getModel());
+		bindingContext.bindValue(observeTextTextAccountIDObserveWidget, idGetModelObserveValue, null, null);
+		//
+		IObservableValue observeTextTextBalanceObserveWidget = WidgetProperties.text(SWT.Modify).observe(textBalance);
+		IObservableValue balanceGetModelObserveValue = BeanProperties.value("balance").observe(getModel());
+		bindingContext.bindValue(observeTextTextBalanceObserveWidget, balanceGetModelObserveValue, null, null);
+		//
+		ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
+		IObservableMap[] observeMaps = BeansObservables.observeMaps(listContentProvider.getKnownElements(), Customer.class, new String[]{"description", "id"});
+		tableViewer.setLabelProvider(new ObservableMapLabelProvider(observeMaps));
+		tableViewer.setContentProvider(listContentProvider);
+		//
+		IObservableList customersGetModelObserveList = BeanProperties.list("customers").observe(getModel());
+		tableViewer.setInput(customersGetModelObserveList);
+		//
+		ObservableListContentProvider listContentProvider_1 = new ObservableListContentProvider();
+		IObservableMap[] observeMaps_1 = BeansObservables.observeMaps(listContentProvider_1.getKnownElements(), Transaction.class, new String[]{"description", "sourceAccountDescription", "processed"});
+		tableViewer_1.setLabelProvider(new ObservableMapLabelProvider(observeMaps_1));
+		tableViewer_1.setContentProvider(listContentProvider_1);
+		//
+		IObservableList transactionsGetModelObserveList = BeanProperties.list("transactions").observe(getModel());
+		tableViewer_1.setInput(transactionsGetModelObserveList);
+		//
+		return bindingContext;
+	}
 }
