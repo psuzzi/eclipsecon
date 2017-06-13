@@ -22,6 +22,12 @@ public class TransactionSearchPart extends BasePart<Bank>{
 	@Inject
 	protected ESelectionService selectionService;
 	
+	protected SelectionAdapter listener = new SelectionAdapter() {
+		public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+			update();
+		};
+	};
+	
 	@Inject
 	public TransactionSearchPart(MApplication app) {
 		setModel(app.getContext().get(Bank.class));
@@ -46,17 +52,10 @@ public class TransactionSearchPart extends BasePart<Bank>{
 		setModel(model);
 	}
 
-
 	@PostConstruct
 	public void postConstruct(Composite parent) {
 		
 	}
-	
-	protected SelectionAdapter listener = new SelectionAdapter() {
-		public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
-			update();
-		};
-	};
 	
 	protected void update() {
 		// Update the UI
