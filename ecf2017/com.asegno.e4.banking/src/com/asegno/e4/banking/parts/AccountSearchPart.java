@@ -35,7 +35,7 @@ public class AccountSearchPart extends BasePart<Bank>{
 		super.setModel(model);
 	}
 	
-	public Bank gteModel() {
+	public Bank getModel() {
 		return model;
 	}
 	
