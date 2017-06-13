@@ -2,17 +2,22 @@
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.asegno.e4.banking.application" bindingContexts="_6wlLecgZEeSyMNYR5xypkQ">
   <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.asegno.e4.banking.window.main" label="Eclipse 4 RCP Application" width="900" height="650">
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_t_pdIE7yEeeVH6oRosQrMA" elementId="com.asegno.e4.banking.perspectivestack.0">
-      <children xsi:type="advanced:Perspective" xmi:id="_maP54FAiEeeQcps20EcOmw" elementId="com.asegno.e4.banking.perspective.sampleperspective" label="Sample Perspective" iconURI="platform:/plugin/com.asegno.e4.banking/icons/sample.png">
+      <children xsi:type="advanced:Perspective" xmi:id="_maP54FAiEeeQcps20EcOmw" elementId="com.asegno.e4.banking.perspective.sampleperspective" toBeRendered="false" label="Sample Perspective" iconURI="platform:/plugin/com.asegno.e4.banking/icons/sample.png">
         <children xsi:type="basic:Part" xmi:id="_m3vHIFAiEeeQcps20EcOmw" elementId="com.asegno.e4.banking.part.samplepart" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.SamplePart" label="Sample Part"/>
       </children>
-      <children xsi:type="advanced:Perspective" xmi:id="_xc2uEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.0" toBeRendered="false"/>
-      <children xsi:type="advanced:Perspective" xmi:id="_yEYBEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.1" toBeRendered="false">
+      <children xsi:type="advanced:Perspective" xmi:id="_xc2uEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.customers" label="Customers" iconURI="platform:/plugin/com.asegno.e4.banking/icons/32/user-group_32.png">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_BDkMIFB2EeetMdeUBUncdg" elementId="com.asegno.e4.banking.partsashcontainer.2" horizontal="true">
+          <children xsi:type="basic:Part" xmi:id="_B89SQFB2EeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.customersearch" containerData="35" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.CustomerSearchPart" label="Customer Search"/>
+          <children xsi:type="basic:Part" xmi:id="_E9aykFB2EeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.customerdetail" containerData="65" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.CustomerDetailPart" label="Customer Detail"/>
+        </children>
+      </children>
+      <children xsi:type="advanced:Perspective" xmi:id="_yEYBEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.accounts" label="Accounts" iconURI="platform:/plugin/com.asegno.e4.banking/icons/32/statistic_32.png">
         <children xsi:type="basic:PartSashContainer" xmi:id="_0y_jcFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.partsashcontainer.0" horizontal="true">
           <children xsi:type="basic:Part" xmi:id="_1_ytwFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.accountsearch" containerData="35" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.AccountSearchPart" label="Account Search"/>
           <children xsi:type="basic:Part" xmi:id="_5XUDMFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.accountdetail" containerData="65" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.AccountDetailPart" label="Account Detail"/>
         </children>
       </children>
-      <children xsi:type="advanced:Perspective" xmi:id="_ycRjsFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.2" toBeRendered="false">
+      <children xsi:type="advanced:Perspective" xmi:id="_ycRjsFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.perspective.transactions" label="Transactions" iconURI="platform:/plugin/com.asegno.e4.banking/icons/32/data_32.png">
         <children xsi:type="basic:PartSashContainer" xmi:id="_9UnmQFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.partsashcontainer.1" horizontal="true">
           <children xsi:type="basic:Part" xmi:id="_-hMHEFBWEeetMdeUBUncdg" elementId="com.asegno.e4.banking.part.transactionsearch" containerData="35" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.parts.TransactionSearchPart" label="Transaction Search"/>
           <children xsi:type="basic:PartStack" xmi:id="_Bn9DsFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.partstack.0" containerData="65">
