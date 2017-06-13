@@ -20,6 +20,7 @@ import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -146,18 +147,18 @@ public class CustomerSearchPart extends BasePart<Bank>{
 		list.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		
 		// User Interaction
-		textFilter.addKeyListener(new org.eclipse.swt.events.KeyAdapter() {
+		textFilter.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				update();
 			}
 		});
 
-		btnFirstName.addSelectionListener(updateListener);
-		btnLastName.addSelectionListener(updateListener);
-		btnAddress.addSelectionListener(updateListener);
-		btnCustomerId.addSelectionListener(updateListener);
-		btnSearch.addSelectionListener(updateListener);
+		btnFirstName.addSelectionListener(listener);
+		btnLastName.addSelectionListener(listener);
+		btnAddress.addSelectionListener(listener);
+		btnCustomerId.addSelectionListener(listener);
+		btnSearch.addSelectionListener(listener);
 		btnClear.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -178,7 +179,7 @@ public class CustomerSearchPart extends BasePart<Bank>{
 		
 	}
 	
-	protected SelectionAdapter updateListener = new SelectionAdapter() {
+	protected SelectionAdapter listener = new SelectionAdapter() {
 		public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 			update();
 		};

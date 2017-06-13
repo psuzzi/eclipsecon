@@ -68,7 +68,7 @@ public class CustomerDetailPart extends BasePart<Customer>{
 	
 	/** Called by injection when a Customer is set in the active selection */
 	@Inject
-	public void changed(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Customer customer) {
+	public void selectionChanged(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Customer customer) {
 		if(customer==null)
 			return;
 		setModel(customer);

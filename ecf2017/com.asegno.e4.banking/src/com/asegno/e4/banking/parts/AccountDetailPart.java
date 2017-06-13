@@ -27,14 +27,15 @@ public class AccountDetailPart extends BasePart<Account>{
 		return model;
 	}
 	
-	/** Called by injection when a Customer is set in the active selection */
+	/** Called by injection when an Account is set in the active selection */
 	@Inject
-	public void changed(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Account account) {
+	public void selectionChanged(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Account account) {
 		if(account==null)
 			return;
 		setModel(account);
 	}
 	
+	/** called by the E4 framework when an event is posted with the given topic and object */
 	@Inject
 	@Optional
 	private void modelModified(@UIEventTopic(EventConstants.TOPIC_MODEL_MODIFIED) Account account) {
@@ -47,6 +48,7 @@ public class AccountDetailPart extends BasePart<Account>{
 	}
 	
 	private void update() {
+		// Update the UI
 	}
 
 }

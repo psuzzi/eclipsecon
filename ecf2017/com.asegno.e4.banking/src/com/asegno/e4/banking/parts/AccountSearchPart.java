@@ -39,7 +39,7 @@ public class AccountSearchPart extends BasePart<Bank>{
 		return model;
 	}
 	
-	/** called by the E4 framework when an event is posted with the given topic and a Bank object */
+	/** called by the E4 framework when an event is posted with the given topic and object */
 	@Inject
 	@Optional
 	private void modelModified(@UIEventTopic(EventConstants.TOPIC_MODEL_MODIFIED) Bank model) {
@@ -51,14 +51,14 @@ public class AccountSearchPart extends BasePart<Bank>{
 		
 	}
 	
-	protected SelectionAdapter updateListener = new SelectionAdapter() {
+	protected SelectionAdapter listener = new SelectionAdapter() {
 		public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
 			update();
 		};
 	};
 
 	protected void update() {
-		// TODO Auto-generated method stub
+		// Update the UI
 	}
 
 }
