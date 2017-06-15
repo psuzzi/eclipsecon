@@ -36,7 +36,6 @@ import com.asegno.e4.banking.model.Account;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 public class AccountSearchPart extends BasePart<Bank>{
 	private DataBindingContext m_bindingContext;
@@ -88,7 +87,6 @@ public class AccountSearchPart extends BasePart<Bank>{
 		composite.setLayout(new GridLayout(1, false));
 		
 		Label lblSearchAccounts = new Label(composite, SWT.NONE);
-		lblSearchAccounts.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
 		lblSearchAccounts.setText("Search Accounts");
 		
 		Composite composite_1 = new Composite(composite, SWT.NONE);
@@ -141,7 +139,6 @@ public class AccountSearchPart extends BasePart<Bank>{
 		btnClear.setText("Clear");
 		
 		Label lblSearchResults = new Label(composite, SWT.NONE);
-		lblSearchResults.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
 		lblSearchResults.setText("Search results");
 		
 		listViewer = new ListViewer(composite, SWT.BORDER | SWT.V_SCROLL);

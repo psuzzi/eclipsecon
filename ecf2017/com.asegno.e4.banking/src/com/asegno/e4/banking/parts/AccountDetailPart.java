@@ -38,7 +38,6 @@ import com.asegno.e4.banking.model.Customer;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import com.asegno.e4.banking.model.Transaction;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 public class AccountDetailPart extends BasePart<Account>{
 	private DataBindingContext m_bindingContext;
@@ -95,8 +94,7 @@ public class AccountDetailPart extends BasePart<Account>{
 		composite.setLayout(new GridLayout(1, false));
 		
 		Label lblAccountDetail = new Label(composite, SWT.NONE);
-		lblAccountDetail.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
-		lblAccountDetail.setText("Account Information");
+		lblAccountDetail.setText("Account Detail");
 		
 		Composite composite_1 = new Composite(composite, SWT.NONE);
 		composite_1.setLayout(new GridLayout(4, false));

@@ -36,7 +36,6 @@ import com.asegno.e4.banking.EventConstants;
 import com.asegno.e4.banking.model.Bank;
 import com.asegno.e4.banking.model.Customer;
 import com.asegno.e4.banking.parts.filters.CustomersFilter;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 public class CustomerSearchPart extends BasePart<Bank>{
 	
@@ -95,7 +94,6 @@ public class CustomerSearchPart extends BasePart<Bank>{
 		composite.setLayout(new GridLayout(1, false));
 		
 		Label lblSearchCustomers = new Label(composite, SWT.NONE);
-		lblSearchCustomers.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
 		lblSearchCustomers.setText("Search Customers");
 		
 		Composite composite_1 = new Composite(composite, SWT.NONE);
@@ -142,7 +140,6 @@ public class CustomerSearchPart extends BasePart<Bank>{
 		btnClear.setText("Clear");
 		
 		Label lblSearchResults = new Label(composite, SWT.NONE);
-		lblSearchResults.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
 		lblSearchResults.setText("Search Results");
 		
 		listViewer = new ListViewer(composite, SWT.BORDER | SWT.V_SCROLL);

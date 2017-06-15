@@ -35,7 +35,6 @@ import com.asegno.e4.banking.model.Account;
 import com.asegno.e4.banking.model.Bank;
 import com.asegno.e4.banking.model.Customer;
 import com.asegno.e4.banking.model.Transaction;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 public class CustomerDetailPart extends BasePart<Customer>{
 	
@@ -94,7 +93,6 @@ public class CustomerDetailPart extends BasePart<Customer>{
 		parent.setLayout(new GridLayout(1, false));
 		
 		Label lblCustomerInformation = new Label(parent, SWT.NONE);
-		lblCustomerInformation.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
 		lblCustomerInformation.setText("Customer Information");
 		
 		Group grpGeneral = new Group(parent, SWT.NONE);
