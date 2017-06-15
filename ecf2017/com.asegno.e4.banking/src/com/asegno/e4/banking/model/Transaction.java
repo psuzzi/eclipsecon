@@ -20,7 +20,7 @@ import com.asegno.e4.banking.data.Utils;
 @DiscriminatorColumn(name="T_TYPE")
 @XmlSeeAlso({Deposit.class, Charge.class, Withdrawal.class, Transfer.class})
 @XmlRootElement
-public abstract class Transaction extends BaseModel{
+public class Transaction extends BaseModel{
 	
 	protected double amount = 0.0d;
 	protected Account sourceAccount = null;
@@ -46,11 +46,11 @@ public abstract class Transaction extends BaseModel{
 	
 	// subclass data
 	
-	public abstract String getType();
+	public String getType() {return "";}
 	
-	public abstract boolean performProcessing();
+	public boolean performProcessing() {return false;}
 	
-	public abstract double getSourceAccountDeltaAmount();
+	public double getSourceAccountDeltaAmount() {return amount;}
 
 	public double getRecipientAccountDeltaAmount() {
 		return -getSourceAccountDeltaAmount();
@@ -175,12 +175,26 @@ public abstract class Transaction extends BaseModel{
 		return Utils.dateToString(confirmedDate);
 	}
 	
+	public void setConfirmedDateString(String confirmedDateString) {
+		Date date = Utils.stringToDate(confirmedDateString);
+		if(date!=null) {
+			setConfirmedDate(date);
+		}
+	}
+	
 	@XmlTransient
 	public String getProcessedDateString() {
 		if(processedDate==null) {
 			return "";
 		}
 		return(Utils.dateToString(getProcessedDate()));
+	}
+	
+	public void setProcessedDateString(String confirmedDateString) {
+		Date date = Utils.stringToDate(confirmedDateString);
+		if(date!=null) {
+			setProcessedDate(date);
+		}
 	}
 	
 	// Perform operations on the transaction
