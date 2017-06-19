@@ -37,9 +37,9 @@
         <children xsi:type="menu:DirectMenuItem" xmi:id="_A-U_UE-QEeeQcps20EcOmw" elementId="com.asegno.e4.banking.directmenuitem.saveasxml" label="Save As Xml" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.SaveAsXmlHandler"/>
         <children xsi:type="menu:DirectMenuItem" xmi:id="_EoJlsE-QEeeQcps20EcOmw" elementId="com.asegno.e4.banking.directmenuitem.loadfromxml" label="Load From XML" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.LoadFromXmlHandler"/>
         <children xsi:type="menu:MenuSeparator" xmi:id="_YX7swE_BEeeQcps20EcOmw" elementId="com.asegno.e4.banking.menuseparator.1"/>
-        <children xsi:type="menu:DirectMenuItem" xmi:id="_UjzCoFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.directmenuitem.savetodb" toBeRendered="false" label="Save to DB" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.SaveToDbHandler"/>
-        <children xsi:type="menu:DirectMenuItem" xmi:id="_Xir1oFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.directmenuitem.loadfromdb" toBeRendered="false" label="Load from DB" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.LoadFromDbHandler"/>
-        <children xsi:type="menu:MenuSeparator" xmi:id="_ccZ9oFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.menuseparator.0" toBeRendered="false"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_UjzCoFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.directmenuitem.savetodb" label="Save to DB" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.SaveToDbHandler"/>
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_Xir1oFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.directmenuitem.loadfromdb" label="Load from DB" contributionURI="bundleclass://com.asegno.e4.banking/com.asegno.e4.banking.handlers.LoadFromDbHandler"/>
+        <children xsi:type="menu:MenuSeparator" xmi:id="_ccZ9oFBXEeetMdeUBUncdg" elementId="com.asegno.e4.banking.menuseparator.0"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLjcgZEeSyMNYR5xypkQ" elementId="com.asegno.e4.banking.handleditem.quit" label="Quit" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_6wlLjsgZEeSyMNYR5xypkQ" elementId="help" label="Help">

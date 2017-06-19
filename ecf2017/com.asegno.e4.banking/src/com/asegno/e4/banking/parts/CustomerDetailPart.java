@@ -29,13 +29,13 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.asegno.e4.banking.EventConstants;
 import com.asegno.e4.banking.model.Account;
 import com.asegno.e4.banking.model.Bank;
 import com.asegno.e4.banking.model.Customer;
 import com.asegno.e4.banking.model.Transaction;
-import org.eclipse.wb.swt.SWTResourceManager;
 
 public class CustomerDetailPart extends BasePart<Customer>{
 	

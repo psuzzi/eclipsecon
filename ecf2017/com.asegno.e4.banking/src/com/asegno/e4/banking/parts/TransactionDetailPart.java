@@ -68,6 +68,7 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 	public void selectionChanged(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Transaction transaction) {
 		if(transaction==null)
 			return;
+		System.out.println("Detail set transaction:" + transaction.getDescription());
 		setModel(transaction);
 	}
 	
@@ -124,10 +125,7 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 		btnConfirm.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Date date = Utils.stringToDate(textDateConfirmed.getText());
-				if(date==null) {
-					textDateConfirmed.setText(Utils.dateToString(new Date()));
-				}
+				Date date = Utils.stringToDate(textDateConfirmed.getText(), new Date());
 				getModel().confirm(date);
 			}
 		});
@@ -154,10 +152,7 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 		btnProcess.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Date date = Utils.stringToDate(textDateProcessed.getText());
-				if(date==null) {
-					textDateProcessed.setText(Utils.dateToString(new Date()));
-				}
+				Date date = Utils.stringToDate(textDateProcessed.getText(), new Date());
 				if(!getModel().isConfirmed()) {					
 					getModel().confirm(date);
 				}
@@ -228,7 +223,7 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 	}
 	
 	private void update() {
-		// Update the UI
+		m_bindingContext.updateTargets();
 	}
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
@@ -237,11 +232,11 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 		IObservableValue typeGetModelObserveValue = BeanProperties.value("type").observe(getModel());
 		bindingContext.bindValue(observeTextTextTypeObserveWidget, typeGetModelObserveValue, null, null);
 		//
-		IObservableValue observeTextTextAmountObserveWidget = WidgetProperties.text(SWT.Modify).observe(textAmount);
+		IObservableValue observeTextTextAmountObserveWidget = WidgetProperties.text(new int[]{SWT.FocusOut, SWT.DefaultSelection}).observe(textAmount);
 		IObservableValue amountGetModelObserveValue = BeanProperties.value("amount").observe(getModel());
 		bindingContext.bindValue(observeTextTextAmountObserveWidget, amountGetModelObserveValue, null, null);
 		//
-		IObservableValue observeTextTextDateConfirmedObserveWidget = WidgetProperties.text(SWT.Modify).observe(textDateConfirmed);
+		IObservableValue observeTextTextDateConfirmedObserveWidget = WidgetProperties.text(new int[]{SWT.FocusOut, SWT.DefaultSelection}).observe(textDateConfirmed);
 		IObservableValue confirmedDateStringGetModelObserveValue = BeanProperties.value("confirmedDateString").observe(getModel());
 		bindingContext.bindValue(observeTextTextDateConfirmedObserveWidget, confirmedDateStringGetModelObserveValue, null, null);
 		//
@@ -249,7 +244,7 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 		IObservableValue confirmedGetModelObserveValue = BeanProperties.value("confirmed").observe(getModel());
 		bindingContext.bindValue(observeSelectionBtnConfirmedObserveWidget, confirmedGetModelObserveValue, null, null);
 		//
-		IObservableValue observeTextTextDateProcessedObserveWidget = WidgetProperties.text(SWT.Modify).observe(textDateProcessed);
+		IObservableValue observeTextTextDateProcessedObserveWidget = WidgetProperties.text(new int[]{SWT.FocusOut, SWT.DefaultSelection}).observe(textDateProcessed);
 		IObservableValue processedDateStringGetModelObserveValue = BeanProperties.value("processedDateString").observe(getModel());
 		bindingContext.bindValue(observeTextTextDateProcessedObserveWidget, processedDateStringGetModelObserveValue, null, null);
 		//

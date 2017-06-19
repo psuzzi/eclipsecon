@@ -17,6 +17,10 @@ public class Utils {
 	public static Date stringToDate(String dateString) {
 		return stringToDate(DF, dateString);
 	}
+	
+	public static Date stringToDate(String dateString, Date defaultDate) {
+		return stringToDate(DF, dateString, defaultDate);
+	}
 
 	public static Date stringToDate(DateFormat format, String dateString) {
 		try {
@@ -28,6 +32,15 @@ public class Utils {
 					dateString, format.toString());
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	/** Parse the given string to date, if not successeful, returns the default date */
+	public static Date stringToDate(DateFormat format, String dateString, Date defaultDate) {
+		try {
+			return format.parse(dateString);
+		} catch (ParseException e) {
+			return defaultDate;
 		}
 	}
 	

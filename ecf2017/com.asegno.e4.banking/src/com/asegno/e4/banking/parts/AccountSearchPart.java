@@ -16,6 +16,8 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.asegno.e4.banking.EventConstants;
 import com.asegno.e4.banking.model.Bank;
+import com.asegno.e4.banking.model.Customer;
+import com.asegno.e4.banking.model.Transaction;
 import com.asegno.e4.banking.parts.filters.AccountsFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
@@ -78,6 +80,12 @@ public class AccountSearchPart extends BasePart<Bank>{
 	@Inject
 	@Optional
 	private void modelModified(@UIEventTopic(EventConstants.TOPIC_MODEL_MODIFIED) Account account) {
+		update();
+	}
+	
+	@Inject
+	@Optional
+	private void modelModified(@UIEventTopic(EventConstants.TOPIC_MODEL_MODIFIED) Customer customer) {
 		update();
 	}
 

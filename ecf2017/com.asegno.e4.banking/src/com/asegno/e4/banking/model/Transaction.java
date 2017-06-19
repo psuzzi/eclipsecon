@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -167,6 +168,7 @@ public class Transaction extends BaseModel{
 		return !processed;
 	}
 	
+	@Transient
 	@XmlTransient
 	public String getConfirmedDateString() {
 		if(confirmedDate==null) {
@@ -176,12 +178,15 @@ public class Transaction extends BaseModel{
 	}
 	
 	public void setConfirmedDateString(String confirmedDateString) {
-		Date date = Utils.stringToDate(confirmedDateString);
-		if(date!=null) {
+		try {
+			Date date = Utils.stringToDate(confirmedDateString);			
 			setConfirmedDate(date);
+		} catch (Exception e) {
+			// leaves the date as it is
 		}
 	}
 	
+	@Transient
 	@XmlTransient
 	public String getProcessedDateString() {
 		if(processedDate==null) {
@@ -191,9 +196,11 @@ public class Transaction extends BaseModel{
 	}
 	
 	public void setProcessedDateString(String confirmedDateString) {
-		Date date = Utils.stringToDate(confirmedDateString);
-		if(date!=null) {
+		try {
+			Date date = Utils.stringToDate(confirmedDateString);			
 			setProcessedDate(date);
+		} catch (Exception e) {
+			// leaves the date as it is
 		}
 	}
 	
