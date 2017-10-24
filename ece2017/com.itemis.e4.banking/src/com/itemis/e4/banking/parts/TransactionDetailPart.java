@@ -68,7 +68,7 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 	public void selectionChanged(@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Transaction transaction) {
 		if(transaction==null)
 			return;
-		System.out.println("Detail set transaction:" + transaction.getDescription());
+//		System.out.println("Detail set transaction:" + transaction.getDescription());
 		setModel(transaction);
 	}
 	
@@ -142,7 +142,9 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 		lblDate.setText("date");
 		
 		textDateConfirmed = new Text(grpWorkflow, SWT.BORDER);
-		textDateConfirmed.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		GridData gd_textDateConfirmed = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+		gd_textDateConfirmed.widthHint = 100;
+		textDateConfirmed.setLayoutData(gd_textDateConfirmed);
 		
 		btnConfirmed = new Button(grpWorkflow, SWT.CHECK);
 		btnConfirmed.setEnabled(false);
@@ -169,7 +171,9 @@ public class TransactionDetailPart extends BasePart<Transaction>{
 		lblDate_1.setText("date");
 		
 		textDateProcessed = new Text(grpWorkflow, SWT.BORDER);
-		textDateProcessed.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		GridData gd_textDateProcessed = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+		gd_textDateProcessed.widthHint = 100;
+		textDateProcessed.setLayoutData(gd_textDateProcessed);
 		
 		btnProcessed = new Button(grpWorkflow, SWT.CHECK);
 		btnProcessed.setEnabled(false);

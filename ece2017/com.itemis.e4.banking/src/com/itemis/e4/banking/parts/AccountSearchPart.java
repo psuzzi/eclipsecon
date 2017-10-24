@@ -121,7 +121,7 @@ public class AccountSearchPart extends BasePart<Bank>{
 		lblCustomer.setText("Customer");
 		
 		Composite composite_2 = new Composite(composite_1, SWT.NONE);
-		composite_2.setLayout(new GridLayout(3, false));
+		composite_2.setLayout(new GridLayout(2, false));
 		composite_2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		
 		btnName = new Button(composite_2, SWT.CHECK);
@@ -132,6 +132,8 @@ public class AccountSearchPart extends BasePart<Bank>{
 		
 		btnCustomerId = new Button(composite_2, SWT.CHECK);
 		btnCustomerId.setText("Customer ID");
+		btnCustomerId.addSelectionListener(listener);
+		new Label(composite_2, SWT.NONE);
 		new Label(composite_1, SWT.NONE);
 		
 		Composite composite_3 = new Composite(composite_1, SWT.NONE);
@@ -162,12 +164,12 @@ public class AccountSearchPart extends BasePart<Bank>{
 		
 		btnAccountId.addSelectionListener(listener);
 		btnAddress.addSelectionListener(listener);
-		btnCustomerId.addSelectionListener(listener);
 		btnSearch.addSelectionListener(listener);
 		btnClear.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				filter.resetFilter();
+				textFilter.setText("");
 				update();
 			}
 		});
@@ -186,6 +188,7 @@ public class AccountSearchPart extends BasePart<Bank>{
 	
 	protected SelectionAdapter listener = new SelectionAdapter() {
 		public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+			update();
 		};
 	};
 	
@@ -199,6 +202,7 @@ public class AccountSearchPart extends BasePart<Bank>{
 	protected void update() {
 		listViewer.refresh();
 	}
+	
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//

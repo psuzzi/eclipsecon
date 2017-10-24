@@ -56,7 +56,7 @@ public class BasePart<T extends BaseModel> implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
-		System.out.println("Property change: " + e);
+//		System.out.println("Property change: " + e);
 		if(e.getSource()==model) {
 			postEvent(EventConstants.TOPIC_MODEL_MODIFIED, model);
 		}

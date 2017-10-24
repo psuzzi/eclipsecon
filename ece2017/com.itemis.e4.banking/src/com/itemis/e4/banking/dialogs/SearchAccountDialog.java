@@ -259,7 +259,7 @@ public class SearchAccountDialog extends Dialog {
 		bindingContext.bindValue(observeSelectionBtnIdNumberObserveWidget, filterIdNumberFilterObserveValue, null, null);
 		//
 		ObservableListContentProvider listContentProvider = new ObservableListContentProvider();
-		IObservableMap observeMap = BeansObservables.observeMap(listContentProvider.getKnownElements(), Account.class, "accountDescription");
+		IObservableMap observeMap = BeansObservables.observeMap(listContentProvider.getKnownElements(), Account.class, "description");
 		listViewer.setLabelProvider(new ObservableMapLabelProvider(observeMap));
 		listViewer.setContentProvider(listContentProvider);
 		//

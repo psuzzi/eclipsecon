@@ -1,6 +1,10 @@
 
 package com.itemis.e4.banking.parts;
 
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,6 +24,11 @@ import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.nebula.visualization.xygraph.dataprovider.CircularBufferDataProvider;
+import org.eclipse.nebula.visualization.xygraph.dataprovider.IDataProvider;
+import org.eclipse.nebula.visualization.xygraph.dataprovider.Sample;
+import org.eclipse.nebula.visualization.xygraph.figures.Trace;
+import org.eclipse.nebula.visualization.xygraph.figures.XYGraph;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -49,6 +58,7 @@ public class AccountDetailPart extends BasePart<Account>{
 	private TableViewer tableViewer;
 	private TableViewer tableViewer_1;
 	private Canvas canvas;
+	private LightweightSystem lws;
 	
 	
 	@Override
@@ -171,6 +181,10 @@ public class AccountDetailPart extends BasePart<Account>{
 		tblclmnProcessed.setWidth(100);
 		tblclmnProcessed.setText("Processed");
 		
+		// don't instantiate the lightweigt twice. 
+		// it won't refresh the chart on Mac
+		lws = new LightweightSystem(canvas);
+		
 		update();
 		
 		m_bindingContext = initDataBindings();
@@ -182,7 +196,6 @@ public class AccountDetailPart extends BasePart<Account>{
 		tableViewer_1.refresh();
 		resizeColumns(table);
 		resizeColumns(table_1);
-		LightweightSystem lws = new LightweightSystem(canvas);
 		ChartHelper.generateGraph(lws, getModel());
 	}
 	

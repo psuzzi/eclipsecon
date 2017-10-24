@@ -48,6 +48,8 @@ public class CustomerSearchPart extends BasePart<Bank>{
 	private Button btnAddress;
 	private Button btnCustomerId;
 	
+	private Button btnName;
+
 	@Inject
 	protected ESelectionService selectionService;
 	
@@ -114,7 +116,7 @@ public class CustomerSearchPart extends BasePart<Bank>{
 		
 		Composite composite_2 = new Composite(composite_1, SWT.NONE);
 		composite_2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		composite_2.setLayout(new GridLayout(3, false));
+		composite_2.setLayout(new GridLayout(2, false));
 		
 		btnName = new Button(composite_2, SWT.CHECK);
 		btnName.setText("Name");
@@ -124,6 +126,8 @@ public class CustomerSearchPart extends BasePart<Bank>{
 		
 		btnCustomerId = new Button(composite_2, SWT.CHECK);
 		btnCustomerId.setText("Customer ID");
+		btnCustomerId.addSelectionListener(listener);
+		new Label(composite_2, SWT.NONE);
 		new Label(composite_1, SWT.NONE);
 		
 		Composite composite_3 = new Composite(composite_1, SWT.NONE);
@@ -151,8 +155,9 @@ public class CustomerSearchPart extends BasePart<Bank>{
 				update();
 			}
 		});
+		
+		btnName.addSelectionListener(listener);
 		btnAddress.addSelectionListener(listener);
-		btnCustomerId.addSelectionListener(listener);
 		btnSearch.addSelectionListener(listener);
 		btnClear.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -164,7 +169,8 @@ public class CustomerSearchPart extends BasePart<Bank>{
 		});
 		
 		listViewer.addSelectionChangedListener((e)->{
-			selectionService.setSelection(listViewer.getStructuredSelection().getFirstElement());
+			selectionService.setSelection(
+					listViewer.getStructuredSelection().getFirstElement());
 		});
 		
 		listViewer.addFilter(filter);
@@ -177,10 +183,10 @@ public class CustomerSearchPart extends BasePart<Bank>{
 	
 	protected SelectionAdapter listener = new SelectionAdapter() {
 		public void widgetSelected(org.eclipse.swt.events.SelectionEvent e) {
+			update();
 		};
 	};
-	private Button btnName;
-
+	
 	public void update() {
 		listViewer.refresh();
 	}

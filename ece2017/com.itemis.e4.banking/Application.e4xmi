@@ -23,7 +23,7 @@
           <children xsi:type="basic:PartStack" xmi:id="_rb5-YLeHEeeQLM4C_4qRBA" elementId="com.itemis.e4.banking.partstack.0" containerData="650">
             <children xsi:type="basic:Part" xmi:id="_utK60LeHEeeQLM4C_4qRBA" elementId="com.itemis.e4.banking.part.transactiondetail" contributionURI="bundleclass://com.itemis.e4.banking/com.itemis.e4.banking.parts.TransactionDetailPart" label="Transaction Detail">
               <toolbar xmi:id="_y5KaILeHEeeQLM4C_4qRBA" elementId="com.itemis.e4.banking.toolbar.1">
-                <children xsi:type="menu:ToolControl" xmi:id="_z05CkLeHEeeQLM4C_4qRBA" elementId="com.itemis.e4.banking.toolcontrol.2"/>
+                <children xsi:type="menu:ToolControl" xmi:id="_z05CkLeHEeeQLM4C_4qRBA" elementId="com.itemis.e4.banking.toolcontrol.2" contributionURI="bundleclass://com.itemis.e4.banking/com.itemis.e4.banking.controls.TransactionCreateToolControl"/>
               </toolbar>
             </children>
           </children>
