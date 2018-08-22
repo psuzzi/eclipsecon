@@ -1,0 +1,33 @@
+Label {
+    font: Verdana 12px;
+    color: black;
+}
+Composite Label {
+    color: black;
+}
+Text {
+    font: Verdana 12px;
+}
+/* Identifies only those SWT Text elements
+appearing within a Composite */
+Composite Text {
+    background-color: white;
+    color: black;
+}
+/* // light blue #c1d5ef, orange #FC4E11 fc4e11, blue2: 1B87EA, light blue 3 #9FC3F6
+*/
+
+SashForm {
+    background-color: #c1d5ef;
+}
+/* background uses a gradient */
+.MTrimBar {
+    //background-color: #e3efff #c1d5ef;
+    background-color: #e3efff #c1d5ef;
+    color: white;
+    font: Verdana 12px;
+}
+
+Shell {
+    background-color: #e3efff #9FC3F6 60%;
+}
