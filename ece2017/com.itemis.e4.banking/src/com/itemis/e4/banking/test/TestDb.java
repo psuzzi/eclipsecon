@@ -13,6 +13,7 @@ public class TestDb {
 	
 	Bank bank;
 	Bank bank2;
+	
 
 	@Test
 	public void testPersistenceDB() throws JAXBException {
